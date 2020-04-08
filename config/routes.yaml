@@ -1,3 +1,47 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\HomeController::index
+
+test:
+    path: /home/
+    controller: App\Controller\HomeController::home
+
+register :
+    path: /auth/register/
+    controller: App\Controller\AuthController::registerView
+
+login :
+    path: /auth/login/
+    controller: App\Controller\LoginController::loginView
+
+logout :
+    path: /auth/logout/
+    controller: App\Controller\LoginController::logout
+
+cinema :
+    path: /home/cinema/
+    controller: App\Controller\CinemaController::cinemaView
+
+espace :
+    path: /auth/espace/
+    controller: App\Controller\EspaceController::espaceView
+
+camera :
+    path: /home/camera/
+    controller: App\Controller\CameraController::surprise
+
+postRegister:
+    path: auth/postregister/
+    controller: App\Controller\AuthController::createmember
+    methods: POST
+
+postLogin:
+    path: auth/postLogin/
+    controller: App\Controller\LoginController::postLogin
+    methods: POST
+
+postCinema :
+    path: /home/postcinema/
+    controller: App\Controller\CinemaController::createfilm
+    methods: POST
+

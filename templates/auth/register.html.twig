@@ -1,0 +1,61 @@
+{# auth/register.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+  <h1>Register</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <form action="{{path('postRegister')}}" method="POST" name="sentMember" id="contactForm" enctype = "multipart/form-data">
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Name</label>
+              <input type="text" class="form-control" placeholder="Name" id="name" name="name" required
+                 data-validation-required-message="Please enter your name, as Dupont-Aignan.">
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group floating-label-form-group controls">
+              <label>First name</label>
+              <input type="text" class="form-control" placeholder="First name" id="firstname" name="firstname" required
+                 data-validation-required-message="Please enter your first name, as Michel.">
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group floating-label-form-group controls">
+              <label>Username</label>
+              <input type="text" class="form-control" placeholder="Username" id="username" name="username" required
+                 data-validation-required-message="Please enter your username, as Michou.">
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group floating-label-form-group controls">
+              <label>Email Address</label>
+              <input type="email" class="form-control" placeholder="Email Address" id="email" name="email"
+                required data-validation-required-message="Please enter your email address.">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group floating-label-form-group controls">
+              <label>Password</label>
+              <input type="password" class="form-control" placeholder="Password" id="password" name="password"
+               required data-validation-required-message="Please enter your password.">
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group floating-label-form-group controls">
+              <label>Password Confirmation</label>
+                <input type="password" class="form-control" placeholder="Password Confirmation" id="passwordconfirmation" name="passwordconfirmation"
+                required data-validation-required-message="Please confirm your password.">
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group floating-label-form-group controls">
+              <label>Photo de Profil</label>
+              <input type = "file" name = "monfichier">
+            </div>
+            <div id="success"></div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-secondary" id="sendMessageButton">Register</button>
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

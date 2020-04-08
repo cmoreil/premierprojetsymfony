@@ -1,0 +1,40 @@
+{# auth/login.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+ <h1>{{title}}</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+          <form action="{{path('postLogin')}}" method="POST" name="sentMessage" id="contactForm">
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Username</label>
+                <input type="text" class="form-control" placeholder="Username" id="username" name="username" required data-validation-required-message="Please enter your username.">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label for='password'>Password :</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password' required>
+              </div>
+            </div>
+
+            <button type="submit" name ='submit' class="btn btn-primary">Se connecter</button>
+          </form>
+          <br>
+      </div>
+    </div>
+
+    <div class="row">
+      <h1> On ne se connait pas...encore &nbsp;</h1>
+        <form action="{{path('register')}}" method="POST" class="bouton">
+          <button type="submit" name ='notregis' class="btn btn-primary">S'inscrire</button>
+        </form>
+    </div>
+  </div>
+
+{% endblock %}

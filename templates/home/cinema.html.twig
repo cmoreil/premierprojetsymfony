@@ -1,0 +1,54 @@
+{# home/cinema.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+  <h1>{{title}}</h1>
+
+  <p>Qu'est-ce qu'on peut voir de beau ...</p>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <br>
+
+    <!--à rendre visible uniquement pour l'adminstrateur -->
+
+  <h2>ADMIN / Ajouter un film à la filmothèque du site</h2>
+    <div class="row">
+      <div class="col-lg-10 col-md-12 mx-auto">
+        <form action="{{path('postCinema')}}" method="POST" enctype = "multipart/form-data">
+            <label>Title</label>
+            <input type="text" class="form-control" placeholder="Title" id="title" name="title" required>
+            <label>Id Genre</label>
+            <input type="text" class="form-control" placeholder="Id Genre" id="idGenre" name="idGenre" required>
+            <label>Release Date</label>
+            <input type="text" class="form-control" placeholder="Release Date" id="releaseDate" name="releaseDate" required>
+            <label>Director</label>
+            <input type="text" class="form-control" placeholder="Director" id="director" name="director" required>
+            <label>Resum</label>
+            <input type="text" class="form-control" placeholder="Resum" id="resum" name="resum" required>
+            <label>Duration</label>
+            <input type="text" class="form-control" placeholder="Duration" id="duration" name="duration" required>
+            <label>Actors</label>
+            <input type="text" class="form-control" placeholder="Actors" id="actors" name="actors" required>
+            <br>
+            <button type="submit" class="btn btn-secondary" id="sendFilm">RegisterFilm</button>
+        </form>
+      </div>
+    </div>
+
+  <h2> A la Une </h2>
+
+  <p> Ici mettre un film d'actu (le dernier par date de sortie) </p>
+
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p>
+
+  <h2> Tous les films </h2>
+
+  <p> Ici mettre tous les films </p>
+
+{% endblock %}
