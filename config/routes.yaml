@@ -40,8 +40,13 @@ postLogin:
     controller: App\Controller\LoginController::postLogin
     methods: POST
 
-postCinema :
-    path: /home/postcinema/
+postFilm:
+    path: /home/postFilm/
     controller: App\Controller\CinemaController::createfilm
+    methods: POST
+
+postGenre :
+    path: /home/postGenre/
+    controller: App\Controller\CinemaController::creategenre
     methods: POST
 

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Films;
+use App\Entity\Genres;
 
 class CinemaController extends AbstractController
 {
@@ -37,5 +38,20 @@ class CinemaController extends AbstractController
         $entityManager->flush();
 
         return new Response('<html><body>New film saves in the DB</body></html>');
+    }
+
+
+    public function CreateGenre(Request $request) : Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $genre = new Genres();
+
+        $genre->setIdGenre($request->request->get('idGenre'));
+        $genre->setName($request->request->get('name'));
+
+        $entityManager->persist($genre);
+        $entityManager->flush();
+
+        return new Response('<html><body>New genre saves in the DB</body></html>');
     }
 }

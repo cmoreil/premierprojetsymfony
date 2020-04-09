@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use \Datetime;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MembersRepository")
@@ -42,14 +43,20 @@ class Members
     private $password;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $creationDate;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="integer")
      */
-    private $lastPost;
+    private $admin;
+
+    public function __construct()
+    {
+        $this->setCreationDate(new DateTime());
+        $this->admin = 0;
+    }
 
     public function getId(): ?int
     {
@@ -116,28 +123,27 @@ class Members
         return $this;
     }
 
-    public function getCreationDate(): ?\DateTimeInterface
+    public function getCreationDate(): ? DateTime
     {
         return $this->creationDatedate;
     }
 
-    public function setCreationDate(\DateTimeInterface $creationDate): self
+    public function setCreationDate(DateTime $creationDate): self
     {
         $this->creationDate = $creationDate;
 
         return $this;
     }
 
-    public function getLastPost(): ?\DateTimeInterface
+    public function getAdmin(): ?integer
     {
-        return $this->lastPost;
+        return $this->admin;
     }
 
-    public function setLastPost(\DateTimeInterface $lastPost): self
+    public function setAdmin(integer $admin): self
     {
-        $this->lastPost = $lastPost;
+        $this->admin = $admin;
 
         return $this;
     }
-
 }

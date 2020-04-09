@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Members;
 use Doctrine\ORM\EntityManagerInterface;
 
-
 class AuthController extends AbstractController
 {
     public function registerView()
@@ -28,10 +27,6 @@ class AuthController extends AbstractController
         $member->setUsername($request->request->get('username'));
         $member->setEmail($request->request->get('email'));
         $member->setPassword($request->request->get('password'));
-        //$member->setCreationDate($request->request->get('creationdate'));
-        //$member->setLastPost($request->request->get('lastPost'));
-
-        var_dump($member);
 
         $entityManager->persist($member);
         $entityManager->flush();
