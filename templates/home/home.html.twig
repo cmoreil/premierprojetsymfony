@@ -10,20 +10,26 @@
 
   <p>Vous allez enfin pouvoir blabla de cinéma, blabla sur le cinéma et bien sûr cinémablablater.</p>
 
-  <h2> A la Une </h2>
+    <h2> A la Une </h2>
 
-  <p> Ici mettre une liste à la Une </p>
+      <p> Ici mettre une liste à la Une </p>
 
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </p>
 
-  <h2> Dernière liste postée </h2>
+    <h2> Dernière liste postée </h2>
 
-  <p> Ici mettre la dernière liste postée et faire voter </p>
+      <p> Ici mettre la dernière liste postée et faire voter </p>
 
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Voter</a>
-  </p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Voter</a>
+      </p>
+
+  {% if isAdmin == true %}
+    <form action='/auth/admin' method='post' class="bouton">
+        <button type='submit' name='admin' class="btn btn-primary">Admin page</button>
+    </form>
+  {% endif %}
 
 {% endblock %}

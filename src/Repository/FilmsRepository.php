@@ -19,6 +19,18 @@ class FilmsRepository extends ServiceEntityRepository
         parent::__construct($registry, Films::class);
     }
 
+    /**
+     *
+     */
+    public function findLastInserted()
+    {
+        return $this->createQueryBuilder('f')
+            ->orderBy('f.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Films[] Returns an array of Films objects
     //  */
@@ -47,4 +59,5 @@ class FilmsRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }

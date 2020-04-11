@@ -1,0 +1,30 @@
+{# home/moredetails.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1> {{title}} </h1>
+    <br>
+    {% if film is not null %}
+        <h2> {{film.title}} </h2>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ film.director }}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ film.releaseDate }}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ film.actors }}</h6>
+                <hr>
+                <p class="card-text">{{ film.resum }}</p>
+                <br>
+            </div>
+        </div>
+        <br>
+    {% else %}
+
+        <p> Ce film n'existe pas ! </p>
+
+    {% endif %}
+
+    <a href="{{path('cinema') }}" class="card-link"> <span class="badge badge-secondary">Merci, je retourne sur la page précédente !</span> </a>
+
+{% endblock %}

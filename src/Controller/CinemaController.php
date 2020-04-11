@@ -8,50 +8,32 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Films;
 use App\Entity\Genres;
+use App\Repository\FilmsRepository;
 
 class CinemaController extends AbstractController
 {
     function CinemaView()
     {
+        $repository = $this->getDoctrine()->getRepository(Films::class);
+        $films = $repository->findAll();
+        $lastFilm = $repository->findLastInserted();
+
         return $this->render('home/cinema.html.twig', [
-            'title' => "CinéCinéma"
+            'title' => "CinéCinéma",
+            'lastFilm' => $lastFilm,
+            'films' => $films
         ]);
     }
 
-    /* à rendre visible seulement pour l'administrateur un FORM pour enregistrer les films sur le site et la base mais en attendant*/
-
-    public function CreateFilm(Request $request) : Response
+    function moreDetails($id)
     {
-        $entityManager = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository(Films::class);
+        $film = $repository->find($id);
 
-        $film = new Films();
+        return $this->render('home/moredetails.html.twig', [
 
-        $film->setTitle($request->request->get('title'));
-        $film->setIdGenre($request->request->get('idGenre'));
-        $film->setReleaseDate($request->request->get('releaseDate'));
-        $film->setDirector($request->request->get('director'));
-        $film->setResum($request->request->get('resum'));
-        $film->setDuration($request->request->get('duration'));
-        $film->setActors($request->request->get('actors'));
-
-        $entityManager->persist($film);
-        $entityManager->flush();
-
-        return new Response('<html><body>New film saves in the DB</body></html>');
-    }
-
-
-    public function CreateGenre(Request $request) : Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $genre = new Genres();
-
-        $genre->setIdGenre($request->request->get('idGenre'));
-        $genre->setName($request->request->get('name'));
-
-        $entityManager->persist($genre);
-        $entityManager->flush();
-
-        return new Response('<html><body>New genre saves in the DB</body></html>');
+                'title' => "CinéCinéma",
+                'film' => $film
+            ]);
     }
 }

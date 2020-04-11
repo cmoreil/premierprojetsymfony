@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use App\Entity\Members;
 
 class HomeController extends AbstractController
 {
@@ -18,9 +20,32 @@ class HomeController extends AbstractController
 
     function home()
     {
-        return $this->render('home/home.html.twig', [
-            'title' => "Home sweet home",
-            'qui' => "les amis"
-        ]);
+        $session = new Session();
+
+        if ($session->get('id'))
+        {
+            return $this->render('home/home.html.twig', [
+                'title' => "Home sweet home",
+                'qui' => $session->get('username'),
+                'isAdmin' => false
+            ]);
+        }
+
+        elseif ($session->get('admin') == 1)
+        {
+            return $this->render('home/home.html.twig', [
+                'title' => "Home sweet home",
+                'qui' => $session->get('username'),
+                'isAdmin' => true
+            ]);
+        }
+
+        else
+        {
+            return $this->render('home/home.html.twig', [
+                'title' => "Home sweet home",
+                'qui' => "les amis"
+            ]);
+        }
     }
 }

@@ -2,7 +2,7 @@ index:
     path: /
     controller: App\Controller\HomeController::index
 
-test:
+home:
     path: /home/
     controller: App\Controller\HomeController::home
 
@@ -17,6 +17,24 @@ login :
 logout :
     path: /auth/logout/
     controller: App\Controller\LoginController::logout
+
+admin :
+    path: /auth/admin/
+    controller: App\Controller\AdminController::view
+
+postGenre :
+    path: /auth/postgenre/
+    controller: App\Controller\AdminController::creategenre
+    methods: POST
+
+postFilm:
+    path: /auth/postfilm/
+    controller: App\Controller\AdminController::createfilm
+    methods: POST
+
+moreDetails:
+    path: /home/moredetails/{id}
+    controller: App\Controller\CinemaController::moreDetails
 
 cinema :
     path: /home/cinema/
@@ -38,15 +56,5 @@ postRegister:
 postLogin:
     path: auth/postLogin/
     controller: App\Controller\LoginController::postLogin
-    methods: POST
-
-postFilm:
-    path: /home/postFilm/
-    controller: App\Controller\CinemaController::createfilm
-    methods: POST
-
-postGenre :
-    path: /home/postGenre/
-    controller: App\Controller\CinemaController::creategenre
     methods: POST
 

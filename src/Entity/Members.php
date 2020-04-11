@@ -146,4 +146,33 @@ class Members
 
         return $this;
     }
+
+    public function validate(): string
+  {
+    $err = '';
+
+    if (empty($this->name)) {
+        $err = $err . "Please, enter your name.<br>";
+      }
+
+    if (empty($this->firstname)) {
+    $err = $err . "Please, enter your name.<br>";
+    }
+
+    if (empty($this->username) || strlen($this->username) <= 3 || strlen($this->username) >=20) {
+      $err = $err . "Invalid 'username' field. Must have more than 3 characters but less than 20, thank you.<br>";
+    }
+    if (empty($this->email) || preg_match('#^[a-zA-Z0-9]+@[a-zA-Z]{2,}\.[a-z]{2,4}$#', $this->email) != 1) {
+      $err = $err . "Invalid 'email' field. Wrong format.<br>";
+    }
+    if (empty($this->password)) {
+      $err = $err . "Invalid 'password' field. Can't be blank.<br>";
+    }
+
+    if (!empty($err)) {
+      throw new \Exception($err);
+    }
+
+    return $err;
+  }
 }

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Members;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\MembersRepository;
 
 class AuthController extends AbstractController
 {
@@ -26,15 +27,21 @@ class AuthController extends AbstractController
         $member->setFirstname($request->request->get('firstname'));
         $member->setUsername($request->request->get('username'));
         $member->setEmail($request->request->get('email'));
-        $member->setPassword($request->request->get('password'));
+        $password_hash = password_hash($request->request->get('password'), PASSWORD_DEFAULT);
+        $member->setPassword($password_hash);
+
+        try {
+            $member->validate();
+            }
+        catch (\Exception $e) {
+            echo 'Exception : ',$e->getMessage();
+            exit();
+        }
 
         $entityManager->persist($member);
         $entityManager->flush();
 
-        return $this->render('home/home.html.twig', [
-            'title' => "Home sweet home",
-            'qui' => $_POST['username']]
-        );
+        return $this->redirectToRoute('login');
     }
 }
 

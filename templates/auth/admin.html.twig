@@ -1,0 +1,50 @@
+{# auth/admin.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!--à rendre visible uniquement pour l'adminstrateur -->
+
+  <h1>{{title}}</h1>
+
+  <h2>ADMIN / Gestion de la filmothèque du site</h2>
+  <h3>Genre</h3>
+  <div class="row">
+      <div class="col-lg-10 col-md-12 mx-auto">
+        <form action="{{path('postGenre')}}" method="POST" enctype = "multipart/form-data">
+            <label>Name</label>
+            <input type="text" class="form-control" placeholder="Name" id="name" name="name" required>
+            <label>Id Genre</label>
+            <input type="text" class="form-control" placeholder="Id Genre" id="idGenre" name="idGenre" required>
+            <br>
+            <button type="submit" class="btn btn-secondary" id="sendFilm">RegisterGenre</button>
+        </form>
+      </div>
+    </div>
+  <h3>Film</h3>
+    <div class="row">
+      <div class="col-lg-10 col-md-12 mx-auto">
+        <form action="{{path('postFilm')}}" method="POST" enctype = "multipart/form-data">
+            <label>Title</label>
+            <input type="text" class="form-control" placeholder="Title" id="title" name="title" required>
+            <label>Id Genre</label>
+            <input type="text" class="form-control" placeholder="Id Genre" id="idGenre" name="idGenre" required>
+            <label>Release Date</label>
+            <input type="text" class="form-control" placeholder="Release Date" id="releaseDate" name="releaseDate" required>
+            <label>Director</label>
+            <input type="text" class="form-control" placeholder="Director" id="director" name="director" required>
+            <label>Resum</label>
+            <input type="text" class="form-control" placeholder="Resum" id="resum" name="resum" required>
+            <label>Duration</label>
+            <input type="text" class="form-control" placeholder="Duration" id="duration" name="duration" required>
+            <label>Actors</label>
+            <input type="text" class="form-control" placeholder="Actors" id="actors" name="actors" required>
+            <br>
+            <button type="submit" class="btn btn-secondary" id="sendGenre">RegisterGenre</button>
+            <br>
+        </form>
+      </div>
+    </div>
+
+  <h2>ADMIN / Gestion de la communauté du site</h2>
+
+{% endblock %}
