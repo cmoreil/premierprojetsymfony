@@ -39,7 +39,7 @@ class LoginController extends AbstractController
                 $session->set('username', $member->getUsername());
                 $session->set('email', $member->getEmail());
                 $session->set('password', $member->getPassword());
-                //$session->set('admin', $member->getAdmin());
+                $session->set('admin', $member->getAdmin());
 
                 return $this->redirectToRoute('espace');
             }

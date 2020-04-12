@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\FilmsRepository;
 use App\Entity\Films;
 use App\Entity\Genres;
 use App\Entity\Members;
@@ -15,8 +16,12 @@ class AdminController extends AbstractController
 
     public function View()
     {
+        $repository = $this->getDoctrine()->getRepository(Members::class);
+        $members = $repository->findAll();
+
         return $this->render('auth/admin.html.twig', [
-            'title' => "Administration"]
+            'title' => "Administration",
+            'members' => $members]
         );
     }
 
@@ -53,4 +58,17 @@ class AdminController extends AbstractController
 
         return new Response('<html><body>New genre saves in the DB</body></html>');
     }
+
+    function viewByOne($id)
+    {
+        $repository = $this->getDoctrine()->getRepository(Members::class);
+        $member = $repository->find($id);
+
+        return $this->render('auth/viewbyone.html.twig', [
+
+                'title' => "Administration",
+                'member' => $member
+            ]);
+    }
+
 }

@@ -123,9 +123,9 @@ class Members
         return $this;
     }
 
-    public function getCreationDate(): ? DateTime
+    public function getCreationDate(): DateTime
     {
-        return $this->creationDatedate;
+        return $this->creationDate;
     }
 
     public function setCreationDate(DateTime $creationDate): self
@@ -135,7 +135,7 @@ class Members
         return $this;
     }
 
-    public function getAdmin(): ?integer
+    public function getAdmin(): ?int
     {
         return $this->admin;
     }

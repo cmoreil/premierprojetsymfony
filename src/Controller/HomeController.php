@@ -24,27 +24,31 @@ class HomeController extends AbstractController
 
         if ($session->get('id'))
         {
-            return $this->render('home/home.html.twig', [
-                'title' => "Home sweet home",
-                'qui' => $session->get('username'),
-                'isAdmin' => false
-            ]);
-        }
+            if ($session->get('admin') == 1)
+            {
+                return $this->render('home/home.html.twig', [
+                    'title' => "Home sweet home",
+                    'qui' => $session->get('username'),
+                    'isAdmin' => $session->get('admin')
+                ]);
+            }
 
-        elseif ($session->get('admin') == 1)
-        {
-            return $this->render('home/home.html.twig', [
-                'title' => "Home sweet home",
-                'qui' => $session->get('username'),
-                'isAdmin' => true
-            ]);
+            else
+            {
+                return $this->render('home/home.html.twig', [
+                    'title' => "Home sweet home",
+                    'qui' => $session->get('username'),
+                    'isAdmin' => 0
+                ]);
+            }
         }
 
         else
         {
             return $this->render('home/home.html.twig', [
                 'title' => "Home sweet home",
-                'qui' => "les amis"
+                'qui' => "les amis",
+                'isAdmin'=> 0
             ]);
         }
     }

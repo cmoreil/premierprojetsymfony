@@ -21,23 +21,51 @@
 
   {% elseif isLog == true %}
     <h2>Mon profil</h2>
-
-    <p>{{ username }}</p>
+      <h4 class="card-title">Informations enregistrées :</h4>
+        <p class="card-text">
+        <table style="width:100%">
+          <tr>
+            <th>Name</th>
+            <td>{{ name }}</td>
+            <td><a href="#" class="card-link" style="text-decoration:none">Modifier</a></td>
+          </tr>
+          <tr>
+            <th>Firstname</th>
+            <td>{{ firstname }}</td>
+            <td><a href="#" class="card-link" style="text-decoration:none">Modifier</a></td>
+          </tr>
+          <tr>
+            <th>Username</th>
+            <td>{{ username }}</td>
+            <td><a href="#" class="card-link" style="text-decoration:none">Modifier</a></td>
+          </tr>
+          <tr>
+            <th>Email Adress</th>
+            <td>{{ email }}</td>
+            <td><a href="#" class="card-link" style="text-decoration:none">Modifier</a></td>
+          </tr>
+          <tr>
+            <th>Paswword</th>
+            <td>{{ password }}</td>
+            <td><a href="#" class="card-link" style="text-decoration:none">Modifier</a></td>
+          </tr>
+        </table>
+    <br>
 
     <h2>Mes listes</h2>
     <div>
       <ul class="elsnotelist-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          Les 10 navets de mon choix
-          <span class="badge badge-primary badge-pill">1</span>
+          Titre liste
+          <a href="#"><span class="badge badge-primary badge-pill">n°</span></a>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          Mes 3 recommandations de l'automne
-          <span class="badge badge-primary badge-pill">2</span>
+          Titre liste
+          <a href="#"><span class="badge badge-primary badge-pill">n°</span></a>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          Rions en 5 films
-          <span class="badge badge-primary badge-pill">3</span>
+          Titre liste
+          <a href="#"><span class="badge badge-primary badge-pill">n°</span></a>
         </li>
       </ul>
     </div>

@@ -2,12 +2,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<!--à rendre visible uniquement pour l'adminstrateur -->
 
   <h1>{{title}}</h1>
-
-  <h2>ADMIN / Gestion de la filmothèque du site</h2>
-  <h3>Genre</h3>
+  <br>
+  <h3>ADMIN / Gestion de la filmothèque du site</h3>
+  <h4>Genre</h4>
   <div class="row">
       <div class="col-lg-10 col-md-12 mx-auto">
         <form action="{{path('postGenre')}}" method="POST" enctype = "multipart/form-data">
@@ -20,7 +19,8 @@
         </form>
       </div>
     </div>
-  <h3>Film</h3>
+    <br>
+  <h4>Film</h4>
     <div class="row">
       <div class="col-lg-10 col-md-12 mx-auto">
         <form action="{{path('postFilm')}}" method="POST" enctype = "multipart/form-data">
@@ -39,12 +39,44 @@
             <label>Actors</label>
             <input type="text" class="form-control" placeholder="Actors" id="actors" name="actors" required>
             <br>
-            <button type="submit" class="btn btn-secondary" id="sendGenre">RegisterGenre</button>
+            <button type="submit" class="btn btn-secondary" id="sendGenre">RegisterFilm</button>
             <br>
         </form>
       </div>
     </div>
+    <br>
+    <br>
 
-  <h2>ADMIN / Gestion de la communauté du site</h2>
+  <h3>ADMIN / Gestion de la communauté du site</h3>
+  <br>
+  <table class="table table-hover">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Firstname</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th></th>
+              <th></th>
+              <th></th>
+          </tr>
+      </thead>
+        <tbody>
+      {% for member in members %}
+            <tr>
+              <td>{{ member.name }}</td>
+              <td>{{ member.firstname }}</td>
+              <td>{{ member.username }}</td>
+              <td>{{ member.email }}</td>
+              <td>{{ member.password }}</td>
+              <td> <a style="text-decoration:none" href = "{{ path ('viewByOne', {'id': member.id})}}">Display</a></td>
+              <td> <a style="text-decoration:none" href = "#">Edite</a></td>
+              <td> <a style="text-decoration:none" href = "#">Delete</a></td>
+          </tr>
+      {%endfor%}
+        </tbody>
+      </table>
+    <br>
 
 {% endblock %}

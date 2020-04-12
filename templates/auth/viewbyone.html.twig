@@ -1,0 +1,31 @@
+{# auth/viewbyone.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1> {{title}} </h1>
+    <br>
+    {% if member is not null %}
+        <h2> {{member.id}} </h2>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ member.name }}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ member.firstname }}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ member.email }}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ member.password }}</h6>
+                <hr>
+                <p class="card-text">Blablabla</p>
+                <br>
+            </div>
+        </div>
+        <br>
+    {% else %}
+
+        <p> Ce membre n'existe pas ! </p>
+
+    {% endif %}
+
+    <a href="{{path('admin') }}" class="card-link"> <span class="badge badge-secondary">Merci, je retourne sur la page précédente !</span> </a>
+
+{% endblock %}

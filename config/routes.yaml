@@ -22,6 +22,10 @@ admin :
     path: /auth/admin/
     controller: App\Controller\AdminController::view
 
+viewByOne :
+    path: /auth/viewbyone/{id}
+    controller: App\Controller\AdminController::viewbyone
+
 postGenre :
     path: /auth/postgenre/
     controller: App\Controller\AdminController::creategenre

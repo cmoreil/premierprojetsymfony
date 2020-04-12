@@ -25,11 +25,13 @@
       <p class="lead">
         <a class="btn btn-primary btn-lg" href="#" role="button">Voter</a>
       </p>
+      <br>
+      <br>
 
-  {% if isAdmin == true %}
-    <form action='/auth/admin' method='post' class="bouton">
-        <button type='submit' name='admin' class="btn btn-primary">Admin page</button>
-    </form>
+  {% if isAdmin == 1 %}
+    <p>
+      <a href="{{path('admin') }}"> <button type="button" class="btn btn-primary btn-lg btn-block">Admin Page</button> </a>
+    </p>
   {% endif %}
 
 {% endblock %}

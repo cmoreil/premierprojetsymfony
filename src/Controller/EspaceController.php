@@ -18,7 +18,11 @@ class EspaceController extends AbstractController
             return $this->render('auth/espace.html.twig', [
                 'title' => 'Bienvenue cher inscrit',
                 'isLog' => true,
-                'username' => $session->get('username')
+                'name' => $session->get('name'),
+                'firstname' => $session->get('firstname'),
+                'username' => $session->get('username'),
+                'email' => $session->get('email'),
+                'password' => $session->get('password')
             ]);
         }
         else

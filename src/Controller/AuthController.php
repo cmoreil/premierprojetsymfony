@@ -20,7 +20,6 @@ class AuthController extends AbstractController
     public function CreateMember(Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
-
         $member = new Members();
 
         $member->setName($request->request->get('name'));
