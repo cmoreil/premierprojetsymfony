@@ -36,4 +36,5 @@ class CinemaController extends AbstractController
                 'film' => $film
             ]);
     }
+
 }

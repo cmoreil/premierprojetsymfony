@@ -1,0 +1,54 @@
+{# auth/updateone.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+  <h1> {{title}} </h1>
+
+  <br>
+    {% if member is not null %}
+        <h3> Membre numéro {{member.id}} </h3>
+                <hr>
+                <p class="card-text">Date de création : {{ member.creationDate |date('d-m-Y') }}</p>
+                <br>
+            </div>
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <form action="{{ path('postUpdateOne', {'id': member.id}) }}" method="POST" name="modifyMember" id="modifyForm" enctype = "multipart/form-data">
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Name</label>
+              <input type="text" class="form-control" id="name" name="name" value= "{{ member.name |capitalize }}">
+            </div>
+            <div class="form-group floating-label-form-group controls">
+              <label>First name</label>
+              <input type="text" class="form-control" id="firstname" name="firstname" value =" {{ member.firstname |capitalize }}">
+            </div>
+            <div class="form-group floating-label-form-group controls">
+              <label>Username</label>
+              <input type="text" class="form-control" id="username" name="username" value =" {{ member.username |capitalize }}">
+            </div>
+            <div class="form-group floating-label-form-group controls">
+              <label>Email Address</label>
+              <input type="email" class="form-control" id="email" name="email" value ="{{ member.email }}">
+            </div>
+            <div id="success"></div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-secondary" id="sendMessageButton">Modifier</button>
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+    {% else %}
+
+        <p> Ce membre n'existe pas ! </p>
+
+    {% endif %}
+
+    <a href="{{ path('admin') }}" class="card-link"> <span class="badge badge-secondary">Merci, je retourne sur la page précédente !</span> </a>
+
+{% endblock %}

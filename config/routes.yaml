@@ -1,9 +1,5 @@
-index:
-    path: /
-    controller: App\Controller\HomeController::index
-
 home:
-    path: /home/
+    path: /
     controller: App\Controller\HomeController::home
 
 register :
@@ -25,6 +21,19 @@ admin :
 viewByOne :
     path: /auth/viewbyone/{id}
     controller: App\Controller\AdminController::viewbyone
+
+deleteOne :
+    path: /auth/deleteone/{id}
+    controller: App\Controller\AdminController::deleteOne
+
+updateOne :
+    path: /auth/updateone/{id}
+    controller: App\Controller\AdminController::updateOne
+
+postUpdateOne :
+    path: /auth/postupdateone/{id}
+    controller: App\Controller\AdminController::postUpdateOne
+    methods: POST
 
 postGenre :
     path: /auth/postgenre/

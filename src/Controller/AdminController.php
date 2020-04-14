@@ -42,7 +42,7 @@ class AdminController extends AbstractController
         $entityManager->persist($film);
         $entityManager->flush();
 
-        return new Response('<html><body>New film saves in the DB</body></html>');
+        return $this->redirectToRoute('cinema');
     }
 
     public function CreateGenre(Request $request) : Response
@@ -56,10 +56,10 @@ class AdminController extends AbstractController
         $entityManager->persist($genre);
         $entityManager->flush();
 
-        return new Response('<html><body>New genre saves in the DB</body></html>');
+        return $this->redirectToRoute('admin');
     }
 
-    function viewByOne($id)
+    function ViewByOne($id)
     {
         $repository = $this->getDoctrine()->getRepository(Members::class);
         $member = $repository->find($id);
@@ -69,6 +69,61 @@ class AdminController extends AbstractController
                 'title' => "Administration",
                 'member' => $member
             ]);
+    }
+
+    function DeleteOne($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $member = $entityManager->getRepository(Members::class)->find($id);
+
+        $entityManager->remove($member);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin');
+    }
+
+    public function UpdateOne($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $member = $entityManager->getRepository(Members::class)->find($id);
+
+        if (!$member)
+        {
+            throw $this->createNotFoundException(
+                'No member found for id l\'ami !'.$id
+            );
+        }
+        else
+        {
+            return $this->render('auth/updateone.html.twig', [
+            'title' => "Administration",
+            'member' => $member
+        ]);
+        }
+    }
+
+    public function PostUpdateOne(Request $request, $id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $member = $entityManager->getRepository(Members::class)->find($id);
+
+        if (!$member)
+        {
+            throw $this->createNotFoundException(
+                'No member found for id l\'ami !'.$id
+            );
+        }
+        else
+        {
+        $member->setName($request->request->get('name'));
+        $member->setFirstname($request->request->get('firstname'));
+        $member->setUsername($request->request->get('username'));
+        $member->setEmail($request->request->get('email'));
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin');
+        }
     }
 
 }
